@@ -1,8 +1,9 @@
 # Constellation — Synthetic Sample Data
 
 > **100% fictional.** Every company, person, and engagement below is invented for the
-> Agents League Hackathon demo. No real customer data appears here. Copy this folder into the
-> new public `constellation` repo as its `data/` directory.
+> Agents League Hackathon demo. No real customer data appears here. Constellation reads this
+> folder in place as its ingest source (`DATA_DIR=sample-data`) and writes the generated graph to
+> `data/graph.json`.
 
 This set mirrors the *shape* of a real multi-customer specialist workspace — dated technical
 reports under `customers/<slug>/`, a shared `tasks/open.md`, a meeting transcript, and a daily

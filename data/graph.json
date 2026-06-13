@@ -1,0 +1,1984 @@
+{
+  "nodes": [
+    {
+      "id": "customer:contoso",
+      "type": "Customer",
+      "label": "Contoso Ltd",
+      "customer": "contoso",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle",
+        "cost-optimization"
+      ],
+      "owner": "Priya Nair"
+    },
+    {
+      "id": "customer:fabrikam",
+      "type": "Customer",
+      "label": "Fabrikam Inc",
+      "customer": "fabrikam",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "owner": "Lars Berg"
+    },
+    {
+      "id": "customer:northwind",
+      "type": "Customer",
+      "label": "Northwind Traders",
+      "customer": "northwind",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "owner": "Sam Okoye"
+    },
+    {
+      "id": "customer:proseware",
+      "type": "Customer",
+      "label": "Proseware Inc",
+      "customer": "proseware",
+      "tags": [
+        "oracle",
+        "postgresql-migration"
+      ],
+      "owner": "Tomás Ruiz"
+    },
+    {
+      "id": "customer:tailwind",
+      "type": "Customer",
+      "label": "Tailwind Traders",
+      "customer": "tailwind",
+      "tags": [
+        "oracle",
+        "postgresql-migration",
+        "identity-auth",
+        "cost-optimization",
+        "kubernetes-aks"
+      ],
+      "owner": "Mei Tan"
+    },
+    {
+      "id": "topic:backup-and-dr",
+      "type": "Topic",
+      "label": "Backup & DR",
+      "tags": [
+        "backup-and-dr"
+      ],
+      "customerCount": 3
+    },
+    {
+      "id": "topic:cost-optimization",
+      "type": "Topic",
+      "label": "Cost optimization",
+      "tags": [
+        "cost-optimization"
+      ],
+      "customerCount": 2
+    },
+    {
+      "id": "topic:identity-auth",
+      "type": "Topic",
+      "label": "Identity & auth",
+      "tags": [
+        "identity-auth"
+      ],
+      "customerCount": 1
+    },
+    {
+      "id": "topic:immutable-storage",
+      "type": "Topic",
+      "label": "Immutable storage",
+      "tags": [
+        "immutable-storage"
+      ],
+      "customerCount": 3
+    },
+    {
+      "id": "topic:kubernetes-aks",
+      "type": "Topic",
+      "label": "Kubernetes / AKS",
+      "tags": [
+        "kubernetes-aks"
+      ],
+      "customerCount": 1
+    },
+    {
+      "id": "topic:oracle",
+      "type": "Topic",
+      "label": "Oracle",
+      "tags": [
+        "oracle"
+      ],
+      "customerCount": 5
+    },
+    {
+      "id": "topic:postgresql-migration",
+      "type": "Topic",
+      "label": "Oracle → PostgreSQL",
+      "tags": [
+        "postgresql-migration"
+      ],
+      "customerCount": 2
+    },
+    {
+      "id": "topic:restore-rto",
+      "type": "Topic",
+      "label": "Restore / RTO",
+      "tags": [
+        "restore-rto"
+      ],
+      "customerCount": 3
+    },
+    {
+      "id": "risk:immutable-lock-retention",
+      "type": "Risk",
+      "label": "Immutable lock period outlives retention",
+      "tags": [
+        "risk"
+      ],
+      "customerCount": 2
+    },
+    {
+      "id": "risk:restore-hydration-rto",
+      "type": "Risk",
+      "label": "Restore hydration exceeds RTO",
+      "tags": [
+        "risk"
+      ],
+      "customerCount": 3
+    },
+    {
+      "id": "rec:add-a-spot-node-pool-for-stateless-storefront-workers",
+      "type": "Recommendation",
+      "label": "Add a spot node pool for stateless storefront workers.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Likely",
+      "tracked": false,
+      "customerCount": 1,
+      "owner": "Mei Tan"
+    },
+    {
+      "id": "rec:adopt-attach-before-hydration-as-a-standard-dr-runbook-step",
+      "type": "Recommendation",
+      "label": "Adopt attach-before-hydration as a standard DR runbook step",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": false,
+      "customerCount": 2,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:adopt-entra-id-passwordless-authentication-on-the-postgresql",
+      "type": "Recommendation",
+      "label": "Adopt Entra ID (passwordless) authentication on the PostgreSQL target.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": true,
+      "customerCount": 1,
+      "owner": "Mei Tan"
+    },
+    {
+      "id": "rec:apply-1-year-reservations-savings-plans-to-the-steady-state-",
+      "type": "Recommendation",
+      "label": "Apply 1-year reservations / savings plans to the steady-state fleet.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": true,
+      "customerCount": 1,
+      "owner": "Priya Nair"
+    },
+    {
+      "id": "rec:convert-plsql-with-an-automated-tool-first-then-hand-finish-",
+      "type": "Recommendation",
+      "label": "Convert PL/SQL with an automated tool first, then hand-finish the ~15% Oracle-specific logic.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Likely",
+      "tracked": false,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:document-service-online-vs-full-performance-rto-for-the-fail",
+      "type": "Recommendation",
+      "label": "Document service-online vs. full-performance RTO for the failover runbook.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Likely",
+      "tracked": false,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:map-oracle-analytic-functions-to-postgresql-equivalents-and-",
+      "type": "Recommendation",
+      "label": "Map Oracle analytic functions to PostgreSQL equivalents and unit-test report outputs.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Likely",
+      "tracked": false,
+      "customerCount": 1,
+      "owner": "Tomás Ruiz"
+    },
+    {
+      "id": "rec:measure-cross-region-restore-hydration-time-and-compare-it-t",
+      "type": "Recommendation",
+      "label": "Measure cross-region restore hydration time and compare it to the DR SLA.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": true,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:phase-the-cutover-around-the-monthly-reporting-cycle-with-a-",
+      "type": "Recommendation",
+      "label": "Phase the cutover around the monthly reporting cycle with a rollback path.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": false,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:pre-warm-the-most-latency-sensitive-tablespaces-after-attach",
+      "type": "Recommendation",
+      "label": "Pre-warm the most latency-sensitive tablespaces after attach to smooth first-touch reads.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Likely",
+      "tracked": true,
+      "customerCount": 1,
+      "owner": "Lars Berg"
+    },
+    {
+      "id": "rec:re-evaluate-node-pool-skus-after-pods-are-right-sized",
+      "type": "Recommendation",
+      "label": "Re-evaluate node pool SKUs after pods are right-sized.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Likely",
+      "tracked": false,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:rebuild-materialized-views-natively-in-postgresql-validate-r",
+      "type": "Recommendation",
+      "label": "Rebuild materialized views natively in PostgreSQL; validate refresh timings against the batch window.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Likely",
+      "tracked": true,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:rightsize-the-18-under-utilized-vms-one-tier-down-and-re-mea",
+      "type": "Recommendation",
+      "label": "Rightsize the 18 under-utilized VMs one tier down and re-measure.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": true,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:run-a-phased-migration-with-a-validation-window-before-cutov",
+      "type": "Recommendation",
+      "label": "Run a phased migration with a validation window before cutover.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": false,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:set-right-sized-requestslimits-vpa-recommendations-so-the-au",
+      "type": "Recommendation",
+      "label": "Set right-sized requests/limits (VPA recommendations) so the autoscaler can bin-pack.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": true,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:set-two-distinct-rto-expectations-service-online-vs-return-t",
+      "type": "Recommendation",
+      "label": "Set two distinct RTO expectations: service-online vs. return-to-full-performance.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": false,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:tune-premium-ssd-v2-iops-to-actual-need-drop-over-provisione",
+      "type": "Recommendation",
+      "label": "Tune Premium SSD v2 IOPS to actual need; drop over-provisioned throughput.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Likely",
+      "tracked": false,
+      "customerCount": 1,
+      "owner": "Alex Rivera"
+    },
+    {
+      "id": "rec:use-unique-rman-backup-piece-handles-per-run-so-immutability",
+      "type": "Recommendation",
+      "label": "Use unique RMAN backup-piece handles per run so immutability never blocks an overwrite.",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": true,
+      "customerCount": 1,
+      "owner": "Sam Okoye"
+    },
+    {
+      "id": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "type": "Recommendation",
+      "label": "Validate the immutable lock period against the retention policy",
+      "tags": [
+        "recommendation"
+      ],
+      "confidence": "Verified",
+      "tracked": false,
+      "customerCount": 2,
+      "owner": "Priya Nair"
+    },
+    {
+      "id": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "type": "Artifact",
+      "label": "Contoso Ltd — DR Failover Review",
+      "customer": "contoso",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "date": "2026-05-22",
+      "artifactPath": "customers/contoso/2026-05-22-dr-failover-review.md"
+    },
+    {
+      "id": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "type": "Artifact",
+      "label": "Contoso Ltd — VM Rightsizing & Cost",
+      "customer": "contoso",
+      "tags": [
+        "oracle",
+        "cost-optimization"
+      ],
+      "date": "2026-06-05",
+      "artifactPath": "customers/contoso/2026-06-05-vm-rightsizing-cost.md"
+    },
+    {
+      "id": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "type": "Artifact",
+      "label": "Fabrikam Inc — Oracle Backup Restore RTO",
+      "customer": "fabrikam",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "date": "2026-05-28",
+      "artifactPath": "customers/fabrikam/2026-05-28-oracle-backup-rto.md"
+    },
+    {
+      "id": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "type": "Artifact",
+      "label": "Northwind Traders — Backup & Restore Benchmark",
+      "customer": "northwind",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "date": "2026-05-20",
+      "artifactPath": "customers/northwind/2026-05-20-backup-restore-benchmark.md"
+    },
+    {
+      "id": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "type": "Artifact",
+      "label": "Northwind Traders — Oracle RMAN to Immutable Blob",
+      "customer": "northwind",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "oracle"
+      ],
+      "date": "2026-06-02",
+      "artifactPath": "customers/northwind/2026-06-02-immutable-storage-rman.md"
+    },
+    {
+      "id": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "type": "Artifact",
+      "label": "Proseware Inc — Oracle to PostgreSQL Migration Plan",
+      "customer": "proseware",
+      "tags": [
+        "oracle",
+        "postgresql-migration"
+      ],
+      "date": "2026-06-03",
+      "artifactPath": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md"
+    },
+    {
+      "id": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "type": "Artifact",
+      "label": "Tailwind Traders — PostgreSQL Migration Assessment",
+      "customer": "tailwind",
+      "tags": [
+        "oracle",
+        "postgresql-migration",
+        "identity-auth"
+      ],
+      "date": "2026-06-01",
+      "artifactPath": "customers/tailwind/2026-06-01-postgres-migration-assessment.md"
+    },
+    {
+      "id": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "type": "Artifact",
+      "label": "Tailwind Traders — AKS Cost Review",
+      "customer": "tailwind",
+      "tags": [
+        "cost-optimization",
+        "kubernetes-aks"
+      ],
+      "date": "2026-06-08",
+      "artifactPath": "customers/tailwind/2026-06-08-aks-cost-review.md"
+    },
+    {
+      "id": "meetings/2026-06-10-northwind-dr-sync.md",
+      "type": "Artifact",
+      "label": "Meeting — Northwind DR Sync (fictional transcript)",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "date": "2026-06-10",
+      "artifactPath": "meetings/2026-06-10-northwind-dr-sync.md"
+    },
+    {
+      "id": "prep/2026-06-12-prep.md",
+      "type": "Artifact",
+      "label": "Daily Prep — 2026-06-12 (fictional)",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle",
+        "cost-optimization"
+      ],
+      "date": "2026-06-12",
+      "artifactPath": "prep/2026-06-12-prep.md"
+    },
+    {
+      "id": "action:contoso:2",
+      "type": "Action",
+      "label": "Measure cross-region restore hydration time against the DR SLA.",
+      "customer": "contoso",
+      "owner": "Alex Rivera",
+      "date": "2026-06-19",
+      "tags": [
+        "action"
+      ]
+    },
+    {
+      "id": "action:contoso:3",
+      "type": "Action",
+      "label": "Rightsize the 18 under-utilized production VMs one tier down.",
+      "customer": "contoso",
+      "owner": "Alex Rivera",
+      "date": "2026-06-20",
+      "tags": [
+        "action"
+      ]
+    },
+    {
+      "id": "action:contoso:4",
+      "type": "Action",
+      "label": "Apply 1-year reservations to the steady-state VM fleet.",
+      "customer": "contoso",
+      "owner": "Priya Nair",
+      "date": "2026-06-25",
+      "tags": [
+        "action"
+      ]
+    },
+    {
+      "id": "action:fabrikam:5",
+      "type": "Action",
+      "label": "Pre-warm latency-sensitive tablespaces after restore attach.",
+      "customer": "fabrikam",
+      "owner": "Lars Berg",
+      "date": "2026-06-17",
+      "tags": [
+        "action"
+      ]
+    },
+    {
+      "id": "action:northwind:0",
+      "type": "Action",
+      "label": "Use unique RMAN backup-piece handles per run to avoid immutability overwrite conflicts.",
+      "customer": "northwind",
+      "owner": "Sam Okoye",
+      "date": "2026-06-16",
+      "tags": [
+        "action"
+      ]
+    },
+    {
+      "id": "action:northwind:1",
+      "type": "Action",
+      "label": "Publish service-online vs. full-performance RTO numbers for the logistics database.",
+      "customer": "northwind",
+      "owner": "Alex Rivera",
+      "date": "2026-06-18",
+      "tags": [
+        "action"
+      ]
+    },
+    {
+      "id": "action:proseware:8",
+      "type": "Action",
+      "label": "Rebuild materialized views natively in PostgreSQL and validate refresh timings.",
+      "customer": "proseware",
+      "owner": "Alex Rivera",
+      "date": "2026-06-24",
+      "tags": [
+        "action"
+      ]
+    },
+    {
+      "id": "action:tailwind:6",
+      "type": "Action",
+      "label": "Adopt Entra ID (passwordless) auth on the PostgreSQL target.",
+      "customer": "tailwind",
+      "owner": "Mei Tan",
+      "date": "2026-06-22",
+      "tags": [
+        "action"
+      ]
+    },
+    {
+      "id": "action:tailwind:7",
+      "type": "Action",
+      "label": "Set right-sized requests/limits on AKS workloads (VPA).",
+      "customer": "tailwind",
+      "owner": "Alex Rivera",
+      "date": "2026-06-19",
+      "tags": [
+        "action"
+      ]
+    },
+    {
+      "id": "person:alex-rivera",
+      "type": "Person",
+      "label": "Alex Rivera",
+      "owner": "Alex Rivera",
+      "tags": []
+    },
+    {
+      "id": "person:lars-berg",
+      "type": "Person",
+      "label": "Lars Berg",
+      "owner": "Lars Berg",
+      "tags": []
+    },
+    {
+      "id": "person:mei-tan",
+      "type": "Person",
+      "label": "Mei Tan",
+      "owner": "Mei Tan",
+      "tags": []
+    },
+    {
+      "id": "person:priya-nair",
+      "type": "Person",
+      "label": "Priya Nair",
+      "owner": "Priya Nair",
+      "tags": []
+    },
+    {
+      "id": "person:sam-okoye",
+      "type": "Person",
+      "label": "Sam Okoye",
+      "owner": "Sam Okoye",
+      "tags": []
+    },
+    {
+      "id": "person:tomas-ruiz",
+      "type": "Person",
+      "label": "Tomás Ruiz",
+      "owner": "Tomás Ruiz",
+      "tags": []
+    }
+  ],
+  "links": [
+    {
+      "source": "customer:contoso",
+      "target": "action:contoso:2",
+      "type": "follows-up",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "action:contoso:3",
+      "type": "follows-up",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "action:contoso:4",
+      "type": "follows-up",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "customer:fabrikam",
+      "type": "shares-risk",
+      "weight": 2
+    },
+    {
+      "source": "customer:contoso",
+      "target": "customer:fabrikam",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:contoso",
+      "target": "customer:northwind",
+      "type": "shares-risk",
+      "weight": 2
+    },
+    {
+      "source": "customer:contoso",
+      "target": "customer:northwind",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:contoso",
+      "target": "customer:proseware",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:contoso",
+      "target": "customer:tailwind",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:contoso",
+      "target": "rec:apply-1-year-reservations-savings-plans-to-the-steady-state-",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "rec:document-service-online-vs-full-performance-rto-for-the-fail",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "rec:measure-cross-region-restore-hydration-time-and-compare-it-t",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "rec:rightsize-the-18-under-utilized-vms-one-tier-down-and-re-mea",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "rec:tune-premium-ssd-v2-iops-to-actual-need-drop-over-provisione",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "risk:immutable-lock-retention",
+      "type": "shares-risk",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "risk:restore-hydration-rto",
+      "type": "shares-risk",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "topic:backup-and-dr",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "topic:cost-optimization",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "topic:immutable-storage",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:contoso",
+      "target": "topic:restore-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "action:fabrikam:5",
+      "type": "follows-up",
+      "weight": 1
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "customer:northwind",
+      "type": "shares-risk",
+      "weight": 2
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "customer:northwind",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "customer:proseware",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "customer:tailwind",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "rec:adopt-attach-before-hydration-as-a-standard-dr-runbook-step",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "rec:pre-warm-the-most-latency-sensitive-tablespaces-after-attach",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "risk:restore-hydration-rto",
+      "type": "shares-risk",
+      "weight": 1
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "topic:backup-and-dr",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "topic:immutable-storage",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:fabrikam",
+      "target": "topic:restore-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "action:northwind:0",
+      "type": "follows-up",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "action:northwind:1",
+      "type": "follows-up",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "customer:proseware",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:northwind",
+      "target": "customer:tailwind",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:northwind",
+      "target": "rec:adopt-attach-before-hydration-as-a-standard-dr-runbook-step",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "rec:set-two-distinct-rto-expectations-service-online-vs-return-t",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "rec:use-unique-rman-backup-piece-handles-per-run-so-immutability",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "risk:immutable-lock-retention",
+      "type": "shares-risk",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "risk:restore-hydration-rto",
+      "type": "shares-risk",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "topic:backup-and-dr",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "topic:immutable-storage",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:northwind",
+      "target": "topic:restore-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:proseware",
+      "target": "action:proseware:8",
+      "type": "follows-up",
+      "weight": 1
+    },
+    {
+      "source": "customer:proseware",
+      "target": "customer:tailwind",
+      "type": "shares-topic",
+      "weight": 2
+    },
+    {
+      "source": "customer:proseware",
+      "target": "rec:map-oracle-analytic-functions-to-postgresql-equivalents-and-",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:proseware",
+      "target": "rec:phase-the-cutover-around-the-monthly-reporting-cycle-with-a-",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:proseware",
+      "target": "rec:rebuild-materialized-views-natively-in-postgresql-validate-r",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:proseware",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:proseware",
+      "target": "topic:postgresql-migration",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "action:tailwind:6",
+      "type": "follows-up",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "action:tailwind:7",
+      "type": "follows-up",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "rec:add-a-spot-node-pool-for-stateless-storefront-workers",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "rec:adopt-entra-id-passwordless-authentication-on-the-postgresql",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "rec:convert-plsql-with-an-automated-tool-first-then-hand-finish-",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "rec:re-evaluate-node-pool-skus-after-pods-are-right-sized",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "rec:run-a-phased-migration-with-a-validation-window-before-cutov",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "rec:set-right-sized-requestslimits-vpa-recommendations-so-the-au",
+      "type": "recommends",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "topic:cost-optimization",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "topic:identity-auth",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "topic:kubernetes-aks",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customer:tailwind",
+      "target": "topic:postgresql-migration",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "target": "customer:contoso",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "target": "risk:immutable-lock-retention",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "target": "risk:restore-hydration-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "target": "topic:backup-and-dr",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "target": "topic:immutable-storage",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "target": "topic:restore-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "target": "customer:contoso",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "target": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "target": "topic:cost-optimization",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "target": "customer:fabrikam",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "target": "risk:restore-hydration-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "target": "topic:backup-and-dr",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "target": "topic:immutable-storage",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "target": "topic:restore-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "target": "customer:northwind",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "target": "risk:immutable-lock-retention",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "target": "risk:restore-hydration-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "target": "topic:backup-and-dr",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "target": "topic:immutable-storage",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "target": "topic:restore-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "target": "customer:northwind",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "target": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "target": "risk:immutable-lock-retention",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "target": "topic:backup-and-dr",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "target": "topic:immutable-storage",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "target": "customer:proseware",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "target": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "target": "topic:postgresql-migration",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "target": "customer:tailwind",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "target": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "target": "topic:identity-auth",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "target": "topic:postgresql-migration",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "target": "customer:tailwind",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "target": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "target": "topic:cost-optimization",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "target": "topic:kubernetes-aks",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "meetings/2026-06-10-northwind-dr-sync.md",
+      "target": "customer:northwind",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "meetings/2026-06-10-northwind-dr-sync.md",
+      "target": "topic:backup-and-dr",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "meetings/2026-06-10-northwind-dr-sync.md",
+      "target": "topic:immutable-storage",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "meetings/2026-06-10-northwind-dr-sync.md",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "meetings/2026-06-10-northwind-dr-sync.md",
+      "target": "topic:restore-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "action:contoso:2",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "action:contoso:3",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "action:northwind:1",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "action:proseware:8",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "action:tailwind:7",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:adopt-attach-before-hydration-as-a-standard-dr-runbook-step",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:convert-plsql-with-an-automated-tool-first-then-hand-finish-",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:document-service-online-vs-full-performance-rto-for-the-fail",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:measure-cross-region-restore-hydration-time-and-compare-it-t",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:phase-the-cutover-around-the-monthly-reporting-cycle-with-a-",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:re-evaluate-node-pool-skus-after-pods-are-right-sized",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:rebuild-materialized-views-natively-in-postgresql-validate-r",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:rightsize-the-18-under-utilized-vms-one-tier-down-and-re-mea",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:run-a-phased-migration-with-a-validation-window-before-cutov",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:set-right-sized-requestslimits-vpa-recommendations-so-the-au",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:set-two-distinct-rto-expectations-service-online-vs-return-t",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:tune-premium-ssd-v2-iops-to-actual-need-drop-over-provisione",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:alex-rivera",
+      "target": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:lars-berg",
+      "target": "action:fabrikam:5",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:lars-berg",
+      "target": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:lars-berg",
+      "target": "rec:pre-warm-the-most-latency-sensitive-tablespaces-after-attach",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:mei-tan",
+      "target": "action:tailwind:6",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:mei-tan",
+      "target": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:mei-tan",
+      "target": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:mei-tan",
+      "target": "rec:add-a-spot-node-pool-for-stateless-storefront-workers",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:mei-tan",
+      "target": "rec:adopt-entra-id-passwordless-authentication-on-the-postgresql",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:priya-nair",
+      "target": "action:contoso:4",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:priya-nair",
+      "target": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:priya-nair",
+      "target": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:priya-nair",
+      "target": "rec:apply-1-year-reservations-savings-plans-to-the-steady-state-",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:priya-nair",
+      "target": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:sam-okoye",
+      "target": "action:northwind:0",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:sam-okoye",
+      "target": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:sam-okoye",
+      "target": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:sam-okoye",
+      "target": "rec:use-unique-rman-backup-piece-handles-per-run-so-immutability",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:sam-okoye",
+      "target": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "person:tomas-ruiz",
+      "target": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "person:tomas-ruiz",
+      "target": "rec:map-oracle-analytic-functions-to-postgresql-equivalents-and-",
+      "type": "owns",
+      "weight": 1
+    },
+    {
+      "source": "prep/2026-06-12-prep.md",
+      "target": "customer:contoso",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "prep/2026-06-12-prep.md",
+      "target": "customer:proseware",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "prep/2026-06-12-prep.md",
+      "target": "customer:tailwind",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "prep/2026-06-12-prep.md",
+      "target": "topic:backup-and-dr",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "prep/2026-06-12-prep.md",
+      "target": "topic:cost-optimization",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "prep/2026-06-12-prep.md",
+      "target": "topic:immutable-storage",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "prep/2026-06-12-prep.md",
+      "target": "topic:oracle",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "prep/2026-06-12-prep.md",
+      "target": "topic:restore-rto",
+      "type": "mentions",
+      "weight": 1
+    },
+    {
+      "source": "rec:add-a-spot-node-pool-for-stateless-storefront-workers",
+      "target": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:adopt-attach-before-hydration-as-a-standard-dr-runbook-step",
+      "target": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:adopt-attach-before-hydration-as-a-standard-dr-runbook-step",
+      "target": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:adopt-attach-before-hydration-as-a-standard-dr-runbook-step",
+      "target": "risk:restore-hydration-rto",
+      "type": "addresses",
+      "weight": 1
+    },
+    {
+      "source": "rec:adopt-entra-id-passwordless-authentication-on-the-postgresql",
+      "target": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:apply-1-year-reservations-savings-plans-to-the-steady-state-",
+      "target": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:convert-plsql-with-an-automated-tool-first-then-hand-finish-",
+      "target": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:document-service-online-vs-full-performance-rto-for-the-fail",
+      "target": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:document-service-online-vs-full-performance-rto-for-the-fail",
+      "target": "risk:restore-hydration-rto",
+      "type": "addresses",
+      "weight": 1
+    },
+    {
+      "source": "rec:map-oracle-analytic-functions-to-postgresql-equivalents-and-",
+      "target": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:measure-cross-region-restore-hydration-time-and-compare-it-t",
+      "target": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:measure-cross-region-restore-hydration-time-and-compare-it-t",
+      "target": "risk:restore-hydration-rto",
+      "type": "addresses",
+      "weight": 1
+    },
+    {
+      "source": "rec:phase-the-cutover-around-the-monthly-reporting-cycle-with-a-",
+      "target": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:pre-warm-the-most-latency-sensitive-tablespaces-after-attach",
+      "target": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:re-evaluate-node-pool-skus-after-pods-are-right-sized",
+      "target": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:rebuild-materialized-views-natively-in-postgresql-validate-r",
+      "target": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:rightsize-the-18-under-utilized-vms-one-tier-down-and-re-mea",
+      "target": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:run-a-phased-migration-with-a-validation-window-before-cutov",
+      "target": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:set-right-sized-requestslimits-vpa-recommendations-so-the-au",
+      "target": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:set-two-distinct-rto-expectations-service-online-vs-return-t",
+      "target": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:set-two-distinct-rto-expectations-service-online-vs-return-t",
+      "target": "risk:restore-hydration-rto",
+      "type": "addresses",
+      "weight": 1
+    },
+    {
+      "source": "rec:tune-premium-ssd-v2-iops-to-actual-need-drop-over-provisione",
+      "target": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:use-unique-rman-backup-piece-handles-per-run-so-immutability",
+      "target": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:use-unique-rman-backup-piece-handles-per-run-so-immutability",
+      "target": "risk:immutable-lock-retention",
+      "type": "addresses",
+      "weight": 1
+    },
+    {
+      "source": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "target": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "target": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "target": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "type": "derived-from",
+      "weight": 1
+    },
+    {
+      "source": "rec:validate-the-immutable-lock-period-against-the-retention-pol",
+      "target": "risk:immutable-lock-retention",
+      "type": "addresses",
+      "weight": 1
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "customers/contoso/2026-05-22-dr-failover-review.md",
+      "title": "Contoso Ltd — DR Failover Review",
+      "customer": "contoso",
+      "date": "2026-05-22",
+      "type": "report",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "excerpt": "Regulatory DR review for Contoso's banking workloads. Backups land in the vaulted immutable tier for compliance. We assessed whether cross-region failover meets the DR SLA."
+    },
+    {
+      "path": "customers/contoso/2026-06-05-vm-rightsizing-cost.md",
+      "title": "Contoso Ltd — VM Rightsizing & Cost",
+      "customer": "contoso",
+      "date": "2026-06-05",
+      "type": "report",
+      "tags": [
+        "oracle",
+        "cost-optimization"
+      ],
+      "excerpt": "Cost-optimization review of Contoso's production VM estate. Several VMs are sized well above their measured utilization, and reservations are not yet applied to the steady-state fleet."
+    },
+    {
+      "path": "customers/fabrikam/2026-05-28-oracle-backup-rto.md",
+      "title": "Fabrikam Inc — Oracle Backup Restore RTO",
+      "customer": "fabrikam",
+      "date": "2026-05-28",
+      "type": "report",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "excerpt": "Fabrikam's Oracle ERP database must recover within a 2-hour RTO. We tested an Azure Backup restore and found the hydration phase is the bottleneck, mirroring what we saw at other backup engagements."
+    },
+    {
+      "path": "customers/northwind/2026-05-20-backup-restore-benchmark.md",
+      "title": "Northwind Traders — Backup & Restore Benchmark",
+      "customer": "northwind",
+      "date": "2026-05-20",
+      "type": "report",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "excerpt": "We benchmarked Azure Backup restore of the core logistics database from the vaulted immutable tier. The restore job completes quickly, but the disk is only fully performant after background hydration, which currently…"
+    },
+    {
+      "path": "customers/northwind/2026-06-02-immutable-storage-rman.md",
+      "title": "Northwind Traders — Oracle RMAN to Immutable Blob",
+      "customer": "northwind",
+      "date": "2026-06-02",
+      "type": "report",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "oracle"
+      ],
+      "excerpt": "Northwind writes Oracle RMAN backups to an immutable blob container for ransomware protection. We reviewed the configuration after RMAN reported write failures against locked blobs."
+    },
+    {
+      "path": "customers/proseware/2026-06-03-oracle-to-postgres-plan.md",
+      "title": "Proseware Inc — Oracle to PostgreSQL Migration Plan",
+      "customer": "proseware",
+      "date": "2026-06-03",
+      "type": "report",
+      "tags": [
+        "oracle",
+        "postgresql-migration"
+      ],
+      "excerpt": "Migration plan for Proseware's reporting database from Oracle to Azure Database for PostgreSQL Flexible Server. The workload is analytics-heavy, so materialized views and analytic functions drive the effort."
+    },
+    {
+      "path": "customers/tailwind/2026-06-01-postgres-migration-assessment.md",
+      "title": "Tailwind Traders — PostgreSQL Migration Assessment",
+      "customer": "tailwind",
+      "date": "2026-06-01",
+      "type": "report",
+      "tags": [
+        "oracle",
+        "postgresql-migration",
+        "identity-auth"
+      ],
+      "excerpt": "Assessment for migrating Tailwind's storefront database from Oracle to Azure Database for PostgreSQL Flexible Server. Schema is moderate; the main effort is PL/SQL conversion."
+    },
+    {
+      "path": "customers/tailwind/2026-06-08-aks-cost-review.md",
+      "title": "Tailwind Traders — AKS Cost Review",
+      "customer": "tailwind",
+      "date": "2026-06-08",
+      "type": "report",
+      "tags": [
+        "cost-optimization",
+        "kubernetes-aks"
+      ],
+      "excerpt": "Cost review of the Tailwind storefront on AKS. Node pools are over-provisioned and most pods run without right-sized resource requests, so the cluster bin-packs poorly."
+    },
+    {
+      "path": "meetings/2026-06-10-northwind-dr-sync.md",
+      "title": "Meeting — Northwind DR Sync (fictional transcript)",
+      "customer": "",
+      "date": "2026-06-10",
+      "type": "meeting",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle"
+      ],
+      "excerpt": "Alex: Thanks for the time. The headline from the benchmark is that the restore job is fast, but full-performance hydration of the logistics database runs about four hours — that's over the RTO. Sam: That's the part…"
+    },
+    {
+      "path": "prep/2026-06-12-prep.md",
+      "title": "Daily Prep — 2026-06-12 (fictional)",
+      "customer": "",
+      "date": "2026-06-12",
+      "type": "prep",
+      "tags": [
+        "backup-and-dr",
+        "immutable-storage",
+        "restore-rto",
+        "oracle",
+        "cost-optimization"
+      ],
+      "excerpt": "Three customers (Northwind, Contoso, Fabrikam) now show the same DR restore-hydration risk. Two of them also share an immutable lock period vs. retention mismatch. Worth turning into a reusable playbook rather than…"
+    }
+  ]
+}

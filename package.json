@@ -1,0 +1,27 @@
+{
+  "name": "constellation",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Turn scattered expertise into a living map you can ask questions.",
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:api": "npm run dev --workspace api",
+    "dev:web": "npm run dev --workspace web",
+    "ingest": "tsx scripts/ingest.ts",
+    "build": "npm run build --workspace web",
+    "typecheck": "npm run typecheck --workspace api && npm run typecheck --workspace web"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
