@@ -72,6 +72,33 @@ A lightweight ingest parser reads the synthetic Markdown artifacts and builds a 
 knowledge graph. The composer runs the prompt through Foundry IQ (reasoning), enriches with Work
 IQ and Fabric IQ, and returns a graph emphasis, a cited narrative, and grounded actions.
 
+### Foundry IQ: deterministic retrieval → grounded model narration
+
+Constellation deliberately splits reasoning into two stages so the result is both genuinely
+model-driven **and** impossible to hallucinate a source:
+
+```mermaid
+flowchart LR
+  Q["Prompt + scene mode"] --> R["Deterministic retrieval\n(graph pattern engine)"]
+  R --> D["Grounded draft\nfindings + confidence + citations"]
+  D -->|FOUNDRY_LIVE=false| M["Serve draft as-is\n(Mock badge)"]
+  D -->|FOUNDRY_LIVE=true| L["Azure AI Foundry\nre-narrates the SAME findings"]
+  L -->|success| N["Polished narrative\n(Live badge) — citations unchanged"]
+  L -->|error| F["Visible fallback\n(Mock badge + reason)"]
+```
+
+1. **Deterministic retrieval.** The graph pattern engine ([`patterns.ts`](api/src/graph/patterns.ts))
+   does the multi-hop work — finding shared risks/topics and repeated-but-untracked recommendations —
+   and produces a *draft* that **owns every citation and confidence label**.
+2. **Grounded narration.** When `FOUNDRY_LIVE=true`, a real Azure AI Foundry chat model
+   ([`foundryClient.ts`](api/src/iq/foundryClient.ts)) rewrites only the *prose* of that draft under a
+   strict contract: use **only** the supplied facts, preserve order, return exactly one segment per
+   finding. The model never selects or invents a source, so citations are identical to the mock path.
+
+This is why the Live/Mock badge is trustworthy: the **facts are computed, the wording is generated**.
+A failed live call flips the badge back to Mock with the reason rather than silently pretending, and
+the whole pipeline is covered by unit tests (`npm test`).
+
 ---
 
 ## Signature creative modes
