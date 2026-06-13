@@ -11,14 +11,14 @@ const QuerySchema = z.object({
   safeDemo: z.boolean().optional().default(false),
 });
 
-queryRouter.post("/", (req, res) => {
+queryRouter.post("/", async (req, res) => {
   const parsed = QuerySchema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: "Invalid request", details: parsed.error.flatten() });
     return;
   }
   try {
-    res.json(composeQuery(parsed.data));
+    res.json(await composeQuery(parsed.data));
   } catch (err) {
     const message = err instanceof Error ? err.message : "Internal error";
     res.status(500).json({ error: message });

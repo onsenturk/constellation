@@ -7,14 +7,17 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/patterns.test.ts test/safety.test.ts test/reason.test.ts"
   },
   "dependencies": {
+    "@azure/identity": "^4.13.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-rate-limit": "^7.4.1",
     "helmet": "^8.0.0",
+    "openai": "^6.42.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

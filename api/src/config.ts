@@ -19,6 +19,8 @@ export const config = {
     endpoint: process.env.AZURE_AI_FOUNDRY_ENDPOINT ?? "",
     project: process.env.AZURE_AI_FOUNDRY_PROJECT ?? "",
     deployment: process.env.AZURE_AI_FOUNDRY_DEPLOYMENT ?? "",
+    apiVersion: process.env.AZURE_AI_FOUNDRY_API_VERSION ?? "2024-10-21",
+    scope: process.env.AZURE_AI_FOUNDRY_SCOPE ?? "https://cognitiveservices.azure.com/.default",
   },
   workIq: { live: flag(process.env.WORKIQ_LIVE) },
   fabricIq: { live: flag(process.env.FABRICIQ_LIVE) },

@@ -52,7 +52,7 @@ const ExportSchema = z.object({
   safeDemo: z.boolean().optional().default(false),
 });
 
-app.post("/api/export", (req, res) => {
+app.post("/api/export", async (req, res) => {
   const parsed = ExportSchema.safeParse(req.body);
   if (!parsed.success) {
     res.status(400).json({ error: "Invalid request", details: parsed.error.flatten() });
@@ -65,7 +65,7 @@ app.post("/api/export", (req, res) => {
     return;
   }
   try {
-    const result = composeQuery(parsed.data);
+    const result = await composeQuery(parsed.data);
     res.json({ markdown: renderMarkdown(result) });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Internal error";

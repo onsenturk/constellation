@@ -31,19 +31,22 @@ Constellation makes that invisible web visible, explorable, and self-narrating.
 ## Microsoft IQ integration (honest live-vs-mock)
 
 All submissions must integrate at least one Microsoft IQ layer. Constellation is designed around
-all three. **In this MVP every layer runs as a deterministic mock over synthetic data**, with a
-clean, live-ready adapter behind an environment flag. Each response surfaces a **Live / Mock**
-badge so nothing is overstated.
+all three. **Foundry IQ — the core reasoner — ships with a working live Azure AI Foundry path**;
+Work IQ and Fabric IQ run as deterministic mocks over synthetic data with clean, live-ready
+adapters behind environment flags. Each response surfaces a **Live / Mock** badge so nothing is
+overstated.
 
 | Layer | Role in Constellation | MVP status | Flip to live |
 |---|---|---|---|
-| **Foundry IQ** | Multi-hop reasoning over the graph; infers links shared across customers and composes grounded, cited narratives. | **Mock (deterministic), live-ready** | `FOUNDRY_LIVE=true` + Azure AI Foundry project |
+| **Foundry IQ** | Multi-hop reasoning over the graph; infers links shared across customers and composes grounded, cited narratives. | **Deterministic mock by default; real Azure AI Foundry call when `FOUNDRY_LIVE=true`** | `FOUNDRY_LIVE=true` + Azure AI Foundry project |
 | **Work IQ** | Enriches actions with owner, recency, and "discussed but unassigned" meeting context. | Mock (sample data) | `WORKIQ_LIVE=true` + Microsoft Graph |
 | **Fabric IQ** | Recurrence and velocity analytics — how often a pattern repeats, how many actions are open. | Mock (sample data) | `FABRICIQ_LIVE=true` + OneLake / Fabric SQL |
 
 > **Honesty rule:** the reasoning is genuinely computed from the data — it is not a canned script.
-> But it runs locally without calling Azure, so the demo never blocks. The Live/Mock badges and
-> this table state exactly what is real.
+> By default it runs locally without calling Azure, so the demo never blocks. With `FOUNDRY_LIVE=true`
+> a real Azure AI Foundry model re-narrates the *same* deterministically-grounded findings — it never
+> picks or invents a citation. The Live/Mock badge on every response states exactly which path ran,
+> and if a live call fails the badge honestly flips back to Mock instead of pretending.
 
 ---
 
@@ -153,6 +156,8 @@ Try these (or click the example chips in the UI):
 - **Hardened API:** input validation (Zod), a 64 KB body cap, and rate limiting (60 req/min);
   `helmet` and a strict CORS origin.
 - **No `dangerouslySetInnerHTML`:** generated text is rendered as text.
+- **Tested core:** unit tests cover the cross-customer pattern engine and the safe-demo redaction
+  boundary (`npm test`).
 
 ---
 
@@ -169,14 +174,21 @@ multi-customer workspace without any real names or content.
 
 ## Going live (optional)
 
-Each IQ layer has a real-API seam behind an env flag. Until a live path is implemented, Foundry
-**fails closed** if `FOUNDRY_LIVE=true` without a configured endpoint (it never silently falls
-back to mock). Prefer `DefaultAzureCredential` over secrets.
+**Foundry IQ ships with a working live path.** With `FOUNDRY_LIVE=true` the deterministic graph
+reasoning still runs and owns every citation; a real Azure AI Foundry chat model (via
+`AzureOpenAI` + `DefaultAzureCredential`, keyless) then re-narrates those grounded findings. It
+**fails closed** if `FOUNDRY_LIVE=true` without an endpoint and deployment, and never silently
+falls back — a failed live call flips the response badge back to Mock with the reason. Work IQ and
+Fabric IQ keep their real-API seams behind their own flags. Prefer `DefaultAzureCredential` over
+secrets.
 
 ```bash
 FOUNDRY_LIVE=true
-AZURE_AI_FOUNDRY_ENDPOINT=https://<your-foundry-endpoint>
-AZURE_AI_FOUNDRY_PROJECT=<project>
+AZURE_AI_FOUNDRY_ENDPOINT=https://<your-resource>.openai.azure.com
+AZURE_AI_FOUNDRY_DEPLOYMENT=<your-model-deployment>
+# Optional:
+AZURE_AI_FOUNDRY_API_VERSION=2024-10-21
+AZURE_AI_FOUNDRY_SCOPE=https://cognitiveservices.azure.com/.default
 ```
 
 ---
@@ -188,6 +200,7 @@ AZURE_AI_FOUNDRY_PROJECT=<project>
 - `npm run dev` brings up both servers; a prompt returns a graph, narrative, actions, and signals.
 - Each scene mode visibly changes the emphasis and narrative.
 - Safe-demo masks owners and refuses export; the API rejects empty/oversized prompts.
+- `npm test` runs the unit suite (pattern engine, safe-demo redaction, reasoner) — all green.
 
 ---
 

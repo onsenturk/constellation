@@ -15,7 +15,8 @@
     "ingest": "tsx scripts/ingest.ts",
     "build": "npm run build --workspace web",
     "demo": "node scripts/demo.mjs",
-    "typecheck": "npm run typecheck --workspace api && npm run typecheck --workspace web"
+    "typecheck": "npm run typecheck --workspace api && npm run typecheck --workspace web",
+    "test": "npm run test --workspace api"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

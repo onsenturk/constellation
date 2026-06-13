@@ -8,7 +8,6 @@
  * Then applies safe-demo redaction when requested.
  */
 
-import { config } from "../config.js";
 import { getGraph } from "../data/load.js";
 import { reason } from "../iq/foundry.js";
 import { enrich } from "../iq/workiq.js";
@@ -17,12 +16,12 @@ import { indexGraph, untrackedRepeatedRecs } from "../graph/patterns.js";
 import { redactResponse } from "../safety/redact.js";
 import type { GraphData, IqSignal, QueryRequest, QueryResponse } from "../types.js";
 
-export function composeQuery(req: QueryRequest): QueryResponse {
+export async function composeQuery(req: QueryRequest): Promise<QueryResponse> {
   const graph = getGraph();
   const idx = indexGraph(graph);
 
   // Foundry IQ (core reasoning).
-  const reasoned = reason(req.prompt, req.mode, graph);
+  const reasoned = await reason(req.prompt, req.mode, graph);
 
   // Work IQ + Fabric IQ enrichment.
   const untrackedCount = untrackedRepeatedRecs(graph, idx).length;
@@ -32,8 +31,8 @@ export function composeQuery(req: QueryRequest): QueryResponse {
   const foundrySignal: IqSignal = {
     iq: "foundry",
     label: "Foundry IQ — multi-hop reasoning",
-    detail: `Reasoned over ${graph.nodes.length} nodes and ${graph.links.length} links; composed a grounded narrative with ${reasoned.citations.length} citations.`,
-    live: config.foundry.live,
+    detail: reasoned.detail,
+    live: reasoned.live,
   };
 
   // Emphasize highlighted nodes; keep the rest as context.

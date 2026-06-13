@@ -11,6 +11,7 @@
  */
 
 import { config } from "../config.js";
+import { narrate } from "./foundryClient.js";
 import {
   indexGraph,
   sharedRisks,
@@ -47,7 +48,14 @@ export interface ReasonResult {
   citations: Citation[];
   highlightedNodeIds: string[];
   candidateActions: CandidateAction[];
+  /** true when a live Azure AI Foundry call produced this narrative. */
+  live: boolean;
+  /** Honest signal detail describing how the narrative was produced. */
+  detail: string;
 }
+
+/** The deterministic result before optional live re-narration. */
+type Draft = Omit<ReasonResult, "live" | "detail">;
 
 type Focus = "restore-risk" | "migration" | "cost" | "untracked" | "";
 
@@ -60,11 +68,15 @@ function pickFocus(prompt: string): Focus {
   return "";
 }
 
-export function reason(prompt: string, mode: SceneMode, graph: IngestedGraph): ReasonResult {
-  if (config.foundry.live && !config.foundry.endpoint) {
+export async function reason(
+  prompt: string,
+  mode: SceneMode,
+  graph: IngestedGraph,
+): Promise<ReasonResult> {
+  if (config.foundry.live && (!config.foundry.endpoint || !config.foundry.deployment)) {
     // Fail closed: never silently fall back to mock when "live" was requested.
     throw new Error(
-      "Foundry live not configured: set AZURE_AI_FOUNDRY_ENDPOINT (and project/deployment) or FOUNDRY_LIVE=false.",
+      "Foundry live not configured: set AZURE_AI_FOUNDRY_ENDPOINT and AZURE_AI_FOUNDRY_DEPLOYMENT (or FOUNDRY_LIVE=false).",
     );
   }
 
@@ -80,6 +92,29 @@ export function reason(prompt: string, mode: SceneMode, graph: IngestedGraph): R
     focus: pickFocus(prompt),
   };
 
+  const draft = buildDraft(ctx, mode);
+
+  if (!config.foundry.live) {
+    return { ...draft, live: false, detail: mockDetail(graph, draft) };
+  }
+
+  // Live: the model only re-narrates the grounded draft; citations are unchanged.
+  try {
+    const narrative = await narrateDraft(draft, prompt);
+    return { ...draft, narrative, live: true, detail: liveDetail(graph, draft) };
+  } catch (err) {
+    // Honest, *visible* fallback: flip the badge to Mock and say why, rather
+    // than silently pretending the live call happened.
+    const why = err instanceof Error ? err.message : "unknown error";
+    return {
+      ...draft,
+      live: false,
+      detail: `Live Foundry call failed (${why}); served the deterministic narrative.`,
+    };
+  }
+}
+
+function buildDraft(ctx: Ctx, mode: SceneMode): Draft {
   switch (mode) {
     case "executive-story":
       return buildExecutiveStory(ctx);
@@ -89,6 +124,49 @@ export function reason(prompt: string, mode: SceneMode, graph: IngestedGraph): R
     default:
       return buildPatternHunt(ctx);
   }
+}
+
+function mockDetail(graph: IngestedGraph, draft: Draft): string {
+  return `Reasoned over ${graph.nodes.length} nodes and ${graph.links.length} links; composed a grounded narrative with ${draft.citations.length} citations (deterministic mock).`;
+}
+
+function liveDetail(graph: IngestedGraph, draft: Draft): string {
+  return `Azure AI Foundry (${config.foundry.deployment}) re-narrated ${draft.narrative.segments.length} grounded findings over ${graph.nodes.length} nodes; ${draft.citations.length} citations preserved.`;
+}
+
+/**
+ * Ask the live model to rewrite the draft's prose, then map the rewritten text
+ * back onto the deterministic segments so every confidence label and citation
+ * is preserved exactly. Throws if the model breaks the segment-count contract.
+ */
+async function narrateDraft(draft: Draft, prompt: string): Promise<Narrative> {
+  const segs = draft.narrative.segments;
+  if (segs.length === 0) return draft.narrative;
+
+  const facts = segs.map((s, i) => `(${i + 1}) [${s.confidence}] ${s.text}`);
+  const sources = draft.citations
+    .slice(0, 8)
+    .map((c) => `${c.title}: ${c.excerpt}`)
+    .filter(Boolean);
+
+  const out = await narrate({
+    question: prompt,
+    title: draft.narrative.title,
+    summary: draft.narrative.summary,
+    facts,
+    sources,
+    segmentCount: segs.length,
+  });
+
+  if (out.segmentTexts.length !== segs.length) {
+    throw new Error(`model returned ${out.segmentTexts.length} segments, expected ${segs.length}`);
+  }
+
+  return {
+    title: out.title || draft.narrative.title,
+    summary: out.summary || draft.narrative.summary,
+    segments: segs.map((s, i) => ({ ...s, text: out.segmentTexts[i] })),
+  };
 }
 
 // --- Shared context + helpers ----------------------------------------------
@@ -176,7 +254,7 @@ function candidatesFromRisk(ctx: Ctx, cluster: SharedCluster): CandidateAction[]
 
 // --- Scene mode: Pattern Hunt ----------------------------------------------
 
-function buildPatternHunt(ctx: Ctx): ReasonResult {
+function buildPatternHunt(ctx: Ctx): Draft {
   if (ctx.focus === "untracked" && ctx.untracked.length) {
     return buildUntrackedHunt(ctx);
   }
@@ -234,7 +312,7 @@ function buildPatternHunt(ctx: Ctx): ReasonResult {
   };
 }
 
-function buildUntrackedHunt(ctx: Ctx): ReasonResult {
+function buildUntrackedHunt(ctx: Ctx): Draft {
   const segments: NarrativeSegment[] = [];
   const cites: Citation[] = [];
   const highlights = new Set<string>();
@@ -293,7 +371,7 @@ function buildUntrackedHunt(ctx: Ctx): ReasonResult {
 
 // --- Scene mode: Executive Story -------------------------------------------
 
-function buildExecutiveStory(ctx: Ctx): ReasonResult {
+function buildExecutiveStory(ctx: Ctx): Draft {
   const tl = timeline(ctx.graph);
   const customers = ctx.graph.nodes.filter((n) => n.type === "Customer");
   const topRisk = ctx.risks[0];
@@ -405,7 +483,7 @@ function buildExecutiveStory(ctx: Ctx): ReasonResult {
 
 // --- Scene mode: Playbook Remix --------------------------------------------
 
-function buildPlaybookRemix(ctx: Ctx): ReasonResult {
+function buildPlaybookRemix(ctx: Ctx): Draft {
   // Find a proven, repeated recommendation that addresses a shared risk, where
   // at least one customer in that risk cluster has not adopted it yet.
   let chosen: { rec: RepeatedRec; risk: SharedCluster; target: string } | undefined;
@@ -494,7 +572,7 @@ function buildPlaybookRemix(ctx: Ctx): ReasonResult {
   };
 }
 
-function emptyResult(title: string): ReasonResult {
+function emptyResult(title: string): Draft {
   return {
     narrative: {
       title,
